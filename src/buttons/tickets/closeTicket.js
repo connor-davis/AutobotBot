@@ -1,4 +1,6 @@
 const { Client, ButtonInteraction } = require("discord.js");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   name: "closeTicket",
@@ -21,6 +23,20 @@ module.exports = {
       content: "This ticket will be closed in 3 seconds.",
       ephemeral: true,
     });
+
+    const tickets = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "data", "tickets.json"), {
+        encoding: "utf-8",
+      })
+    );
+
+    delete tickets[interaction.channel.id];
+
+    fs.writeFileSync(
+      path.join(process.cwd(), "data", "tickets.json"),
+      JSON.stringify(tickets),
+      { encoding: "utf-8" }
+    );
 
     setTimeout(() => {
       interaction.channel.delete();
