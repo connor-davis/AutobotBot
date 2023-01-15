@@ -22,7 +22,7 @@ module.exports = {
         { name: "WS Latency", value: Math.round(client.ws.ping) + "ms" },
         {
           name: "Latency",
-          value: Date.now() - message.createdTimestamp + "ms",
+          value: Date.now() - interaction.createdTimestamp + "ms",
         },
       ])
       .setFooter({
