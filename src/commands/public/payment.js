@@ -41,7 +41,7 @@ module.exports = {
         },
       ])
       .setFooter({
-        name: "Requested by: " + interaction.user.username,
+        text: "Requested by: " + interaction.user.username,
         iconURL: interaction.user.avatarURL(),
       });
 
