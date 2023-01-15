@@ -19,10 +19,10 @@ module.exports = {
       .setTitle("Autobot Ping Information")
       .setColor(0x34d399)
       .addFields([
-        { name: "WS Latency", value: client.ws.ping + "ms" },
+        { name: "WS Latency", value: Math.round(client.ws.ping) + "ms" },
         {
           name: "Latency",
-          value: m.createdTimestamp - message.createdTimestamp + "ms",
+          value: Date.now() - message.createdTimestamp + "ms",
         },
       ])
       .setFooter({
