@@ -9,11 +9,7 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    if (
-      !interaction.member.roles.cache.has(process.env.OWNER_ROLE_ID) ||
-      !interaction.member.roles.cache.has(process.env.ADMIN_ROLE_ID) ||
-      !interaction.user.id === process.env.DEVELOPER_ID
-    )
+    if (!interaction.member.roles.cache.has(process.env.ADMIN_ROLE_ID))
       return interaction.reply({
         content: "Only a staff member can use that.",
         ephemeral: true,

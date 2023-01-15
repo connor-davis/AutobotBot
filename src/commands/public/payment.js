@@ -40,7 +40,7 @@ module.exports = {
           inline: true,
         },
       ])
-      .setAuthor({
+      .setFooter({
         name: "Requested by: " + interaction.user.username,
         iconURL: interaction.user.avatarURL(),
       });
