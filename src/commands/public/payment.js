@@ -16,7 +16,7 @@ module.exports = {
     const paymentInfoEmbed = new EmbedBuilder()
       .setTitle("Autobot Payment Details")
       .setDescription(
-        "Below you can find payment details for purchasing Autobot."
+        "Below you can find payment details for purchasing Autobot. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
       )
       .setColor(0x34d399)
       .addFields([
