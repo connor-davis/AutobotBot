@@ -18,7 +18,13 @@ module.exports = {
     const pingEmbed = new EmbedBuilder()
       .setTitle("Autobot Ping Information")
       .setColor(0x34d399)
-      .addFields([{ name: "WS Latency", value: client.ws.ping }])
+      .addFields([
+        { name: "WS Latency", value: client.ws.ping + "ms" },
+        {
+          name: "Latency",
+          value: m.createdTimestamp - message.createdTimestamp + "ms",
+        },
+      ])
       .setFooter({
         text: "Requested by " + interaction.user.username,
         iconURL: interaction.user.avatarURL(),
