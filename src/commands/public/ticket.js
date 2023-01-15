@@ -113,18 +113,13 @@ module.exports = {
         const ticketEmbed = new EmbedBuilder()
           .setColor(0x34d399)
           .setTitle("Autobot Ticket")
-          .setDescription("Please be patient and wait for staff to assist you.")
-          .addFields(
-            {
-              name: "Ticket Type",
-              value: interaction.options.get("create").value,
-            },
-            interaction.options.get("create").value === "purchase" && {
-              name: "",
-              value:
-                "Please note you can use the /payment command when you are ready to pay.",
-            }
+          .setDescription(
+            "Please be patient and wait for staff to assist you. If you want to purchase autobot, you can use the /payment command when you are ready to pay."
           )
+          .addFields({
+            name: "Ticket Type",
+            value: interaction.options.get("create").value,
+          })
           .setTimestamp()
           .setFooter({
             text: "Created by: " + interaction.user.username,
