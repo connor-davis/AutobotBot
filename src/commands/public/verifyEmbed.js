@@ -2,7 +2,6 @@ const { SlashCommandBuilder, ChatInputCommandInteraction, Client, EmbedBuilder, 
 
 module.exports = {
     name: "verifyEmbed",
-    name: "ticket",
     data: new SlashCommandBuilder()
         .setName("verify-embed")
         .setDescription("Create the verification embed.")
@@ -29,5 +28,7 @@ module.exports = {
         const channel = interaction.guild.channels.cache.get(process.env.VERIFY_CHANNEL_ID);
 
         channel.send({ embeds: [ticketEmbed], components: [row] });
+
+        interaction.reply({ content: "The verify embed has been created.", ephemeral: true });
     }
 };
