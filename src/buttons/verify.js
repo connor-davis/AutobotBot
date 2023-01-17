@@ -1,7 +1,7 @@
 const { Client, ButtonInteraction } = require("discord.js");
 
 module.exports = {
-  name: "verify",
+  name: "verifyButton",
   /**
    * @param {ButtonInteraction} interaction
    * @param {Client} client
