@@ -1,5 +1,4 @@
-const { PermissionsBitField } = require("discord.js");
-const { SlashCommandBuilder, ChatInputCommandInteraction, Client } = require("discord.js");
+const { SlashCommandBuilder, ChatInputCommandInteraction, Client, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     name: "verifyEmbed",
