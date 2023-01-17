@@ -7,9 +7,12 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    interaction.reply({
-      content: "Pong",
-      ephemeral: true,
-    });
+    if (interaction.member.roles.cache.some(role => role.id === process.env.MEMBER_ROLE_ID)) return;
+
+    const memberRole = interaction.guild.roles.cache.find(role => role.id === process.env.MEMBER_ROLE_ID);
+
+    interaction.member.roles.add(memberRole);
+
+    interaction.reply({ content: "You have been verified. Welcome to Autobot Macros!", ephemeral: true });
   },
 };
