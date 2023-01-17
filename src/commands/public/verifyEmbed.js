@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction, Client, EmbedBuilder, PermissionsBitField } = require("discord.js");
+const { SlashCommandBuilder, ChatInputCommandInteraction, Client, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 
 module.exports = {
     name: "verifyEmbed",
@@ -23,7 +23,7 @@ module.exports = {
             new ButtonBuilder()
                 .setCustomId("verifyButton")
                 .setLabel("✔ Verify")
-                .setStyle(ButtonStyle.Secondary)
+                .setStyle(ButtonStyle.Primary)
         );
 
         const channel = interaction.guild.channels.cache.get(process.env.VERIFY_CHANNEL_ID);
