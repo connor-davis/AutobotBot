@@ -1,4 +1,6 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction, Client, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
     name: "verifyEmbed",
@@ -11,6 +13,8 @@ module.exports = {
      * @param {Client} client
      */
     execute: (interaction, client, logger) => {
+        const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
+
         const ticketEmbed = new EmbedBuilder()
             .setColor(0x34d399)
             .setTitle("Autobot Macros Verification")
@@ -25,7 +29,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Primary)
         );
 
-        const channel = interaction.guild.channels.cache.get(process.env.VERIFY_CHANNEL_ID);
+        const channel = interaction.guild.channels.cache.get(guilds[interaction.guildId].verifyChannel);
 
         channel.send({ embeds: [ticketEmbed], components: [row] });
 

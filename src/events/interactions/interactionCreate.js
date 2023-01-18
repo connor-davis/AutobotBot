@@ -40,10 +40,6 @@ module.exports = {
           iconURL: client.user.avatarURL(),
         });
 
-      client.channels.cache
-        .get(process.env.LOG_CHANNEL_ID)
-        .send({ embeds: [commandLogEmbed] });
-
       command.execute(
         interaction,
         client,
@@ -82,10 +78,6 @@ module.exports = {
           text: "Autobot Button Logger",
           iconURL: client.user.avatarURL(),
         });
-
-      client.channels.cache
-        .get(process.env.LOG_CHANNEL_ID)
-        .send({ embeds: [buttonLogEmbed] });
 
       button.execute(
         interaction,
