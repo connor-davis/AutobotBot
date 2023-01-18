@@ -18,10 +18,6 @@ module.exports = {
 
         interaction.guild.channels.delete(guild.verifyChannel);
         interaction.guild.channels.delete(guild.ticketsCategory);
-        interaction.guild.roles.delete(guild.ownerRole);
-        interaction.guild.roles.delete(guild.adminRole);
-        interaction.guild.roles.delete(guild.botRole);
-        interaction.guild.roles.delete(guild.memberRole);
 
         delete guilds[interaction.guildId];
 
