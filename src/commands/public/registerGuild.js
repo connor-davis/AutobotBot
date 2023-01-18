@@ -57,27 +57,27 @@ module.exports = {
                                         guilds[guildId] = guildSettings;
 
                                         fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
-                                    } catch(error) {
+                                    } catch (error) {
                                         const guilds = {};
 
                                         guilds[guildId] = guildSettings;
 
                                         fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
                                     }
+
+                                    const registeredEmbed = new EmbedBuilder()
+                                        .setColor(0x34d399)
+                                        .setTitle("Autobot Registered")
+                                        .setDescription(
+                                            "This server has been registered with Autobot. 🎉"
+                                        );
+
+                                    interaction.reply({ embeds: [registeredEmbed], ephemeral: true });
                                 })
                             })
                         })
                     })
                 })
         });
-
-        const registeredEmbed = new EmbedBuilder()
-            .setColor(0x34d399)
-            .setTitle("Autobot Registered")
-            .setDescription(
-                "This server has been registered with Autobot. 🎉"
-            );
-
-        interaction.reply({ embeds: [registeredEmbed], ephemeral: true });
     }
 };
