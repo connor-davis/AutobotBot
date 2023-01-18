@@ -31,58 +31,52 @@ module.exports = {
                 .then(async (ticketsCategory) => {
                     interaction.channel.send({ content: "Creating the required roles. Note, you can edit the names and other settings of these after." });
 
-                    let ownerRole, adminRole, botRole, memberRole;
+                    client.guilds.cache.get(guildId).roles.create({ name: "owner" }).then((ownerRole) => {
+                        client.guilds.cache.get(guildId).roles.create({ name: "admin" }).then((adminRole) => {
+                            client.guilds.cache.get(guildId).roles.create({ name: "bot" }).then((botRole) => {
+                                client.guilds.cache.get(guildId).roles.create({ name: "member" }).then((memberRole) => {
+                                    const everyoneRole = client.guilds.cache.get(guildId).roles.everyone;
 
-                    if (!guild.roles.cache.has("Owner")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Owner" });
-                    else ownerRole = guild.roles.cache.get("Owner");
+                                    const guildSettings = {
+                                        guild: {
+                                            name: guild.name,
+                                            owner: guild.ownerId
+                                        },
+                                        verifyChannel: verifyChannel.id,
+                                        ticketsCategory: ticketsCategory.id,
+                                        ownerRole: ownerRole.id,
+                                        adminRole: adminRole.id,
+                                        botRole: botRole.id,
+                                        memberRole: memberRole.id,
+                                        everyoneRole: everyoneRole.id,
+                                    }
 
-                    if (!guild.roles.cache.has("Admin")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Admin" });
-                    else ownerRole = guild.roles.cache.get("Admin");
+                                    try {
+                                        const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
 
-                    if (!guild.roles.cache.has("Bot")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Bot" });
-                    else ownerRole = guild.roles.cache.get("Bot");
+                                        guilds[guildId] = guildSettings;
 
-                    if (!guild.roles.cache.has("Member")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Member" });
-                    else ownerRole = guild.roles.cache.get("Member");
+                                        fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
+                                    } catch (error) {
+                                        const guilds = {};
 
-                    const everyoneRole = client.guilds.cache.get(guildId).roles.everyone;
+                                        guilds[guildId] = guildSettings;
 
-                    const guildSettings = {
-                        guild: {
-                            name: guild.name,
-                            owner: guild.ownerId
-                        },
-                        verifyChannel: verifyChannel.id,
-                        ticketsCategory: ticketsCategory.id,
-                        ownerRole: ownerRole.id,
-                        adminRole: adminRole.id,
-                        botRole: botRole.id,
-                        memberRole: memberRole.id,
-                        everyoneRole: everyoneRole.id,
-                    }
+                                        fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
+                                    }
 
-                    try {
-                        const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
+                                    const registeredEmbed = new EmbedBuilder()
+                                        .setColor(0x34d399)
+                                        .setTitle("Autobot Registered")
+                                        .setDescription(
+                                            "This server has been registered with Autobot. 🎉"
+                                        );
 
-                        guilds[guildId] = guildSettings;
-
-                        fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
-                    } catch (error) {
-                        const guilds = {};
-
-                        guilds[guildId] = guildSettings;
-
-                        fs.writeFileSync(path.join(process.cwd(), "data", "guilds.json"), JSON.stringify(guilds), { encoding: "utf-8" });
-                    }
-
-                    const registeredEmbed = new EmbedBuilder()
-                        .setColor(0x34d399)
-                        .setTitle("Autobot Registered")
-                        .setDescription(
-                            "This server has been registered with Autobot. 🎉"
-                        );
-
-                    interaction.reply({ embeds: [registeredEmbed], ephemeral: true });
+                                    interaction.reply({ embeds: [registeredEmbed], ephemeral: true });
+                                });
+                            });
+                        });
+                    });
                 });
         });
     }
