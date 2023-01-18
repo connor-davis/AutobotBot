@@ -33,17 +33,17 @@ module.exports = {
 
                     let ownerRole, adminRole, botRole, memberRole;
 
-                    if (!guild.roles.cache.has("owner")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "owner" });
-                    else ownerRole = guild.roles.cache.get("owner").id;
+                    if (!guild.roles.cache.has("Owner")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Owner" });
+                    else ownerRole = guild.roles.cache.get("Owner");
 
-                    if (!guild.roles.cache.has("admin")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "admin" });
-                    else ownerRole = guild.roles.cache.get("admin").id;
+                    if (!guild.roles.cache.has("Admin")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Admin" });
+                    else ownerRole = guild.roles.cache.get("Admin");
 
-                    if (!guild.roles.cache.has("bot")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "bot" });
-                    else ownerRole = guild.roles.cache.get("bot").id;
+                    if (!guild.roles.cache.has("Bot")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Bot" });
+                    else ownerRole = guild.roles.cache.get("Bot");
 
-                    if (!guild.roles.cache.has("member")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "member" });
-                    else ownerRole = guild.roles.cache.get("member").id;
+                    if (!guild.roles.cache.has("Member")) ownerRole = await client.guilds.cache.get(guildId).roles.create({ name: "Member" });
+                    else ownerRole = guild.roles.cache.get("Member");
 
                     const everyoneRole = client.guilds.cache.get(guildId).roles.everyone;
 
