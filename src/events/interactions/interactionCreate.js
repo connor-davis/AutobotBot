@@ -15,7 +15,7 @@ module.exports = {
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
 
-      if (interaction.commandName !== "register-guild" && !interaction.guildId in guilds) return interaction.reply({ content: "Autobot has not been registered with this guild. Please register it. Please note that this requires you to delete all previous roles and channels/categories that Autobot requires.", ephemeral: true });
+      if (interaction.commandName !== "register-guild" && !interaction.guildId in guilds) return interaction.reply({ content: "Autobot has not been registered with this guild.", ephemeral: true });
 
       if (!command)
         return interaction.reply({
