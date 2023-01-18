@@ -33,13 +33,15 @@ module.exports = {
       ephemeral: true,
     });
 
+    const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
+
     client.guilds.cache
-      .get(process.env.GUILD_ID)
+      .get(interaction.guildId)
       .channels.create({
         name: "ticket-" + interaction.user.username,
         type: ChannelType.GuildText,
         topic: "Ticket type: " + interaction.options.get("create").value,
-        parent: process.env.AUTOBOT_TICKETS_CATEGORY_ID,
+        parent: guilds[interaction.guildId].ticketsCategory,
         permissionOverwrites: [
           {
             id: interaction.user.id,
@@ -50,7 +52,7 @@ module.exports = {
             ],
           },
           {
-            id: process.env.OWNER_ROLE_ID,
+            id: guilds[interaction.guildId].ownerRole,
             allow: [
               PermissionsBitField.Flags.ViewChannel,
               PermissionsBitField.Flags.SendMessages,
@@ -58,7 +60,7 @@ module.exports = {
             ],
           },
           {
-            id: process.env.ADMIN_ROLE_ID,
+            id: guilds[interaction.guildId].adminRole,
             allow: [
               PermissionsBitField.Flags.ViewChannel,
               PermissionsBitField.Flags.SendMessages,
@@ -66,7 +68,7 @@ module.exports = {
             ],
           },
           {
-            id: process.env.BOT_ROLE_ID,
+            id: guilds[interaction.guildId].botRole,
             allow: [
               PermissionsBitField.Flags.ViewChannel,
               PermissionsBitField.Flags.SendMessages,
@@ -74,7 +76,7 @@ module.exports = {
             ],
           },
           {
-            id: process.env.EVERYONE_ID,
+            id: guilds[interaction.guildId].everyoneRole,
             deny: [
               PermissionsBitField.Flags.ViewChannel,
               PermissionsBitField.Flags.SendMessages,
@@ -93,11 +95,11 @@ module.exports = {
         const ticketData = {
           ticketSubject: interaction.user.id,
           ticketStaffRoles: [
-            process.env.OWNER_ROLE_ID,
-            process.env.ADMIN_ROLE_ID,
-            process.env.BOT_ROLE_ID,
+            guilds[interaction.guildId].ownerRole,
+            guilds[interaction.guildId].adminRole,
+            guilds[interaction.guildId].botRole,
           ],
-          everyoneId: process.env.EVERYONE_ID,
+          everyoneId: guilds[interaction.guildId].everyoneRole,
           channelId: channel.id,
           locked: false,
         };

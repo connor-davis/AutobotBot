@@ -16,8 +16,10 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
+    const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
+
     if (
-      !interaction.member.roles.cache.has(process.env.ADMIN_ROLE_ID)
+      !interaction.member.roles.cache.has(guilds[interaction.guildId].adminRole)
     )
       return interaction.reply({
         content: "Only a staff member can use that.",

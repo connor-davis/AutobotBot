@@ -1,4 +1,6 @@
 const { Client, ButtonInteraction } = require("discord.js");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   name: "verifyButton",
@@ -7,9 +9,11 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    if (interaction.member.roles.cache.some(role => role.id === process.env.MEMBER_ROLE_ID)) return;
+    const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
 
-    const memberRole = interaction.guild.roles.cache.find(role => role.id === process.env.MEMBER_ROLE_ID);
+    if (interaction.member.roles.cache.some(role => role.id === guilds[interaction.guildId].memberRole)) return;
+
+    const memberRole = interaction.guild.roles.cache.find(role => role.id === guilds[interaction.guildId].memberRole);
 
     interaction.member.roles.add(memberRole);
 
