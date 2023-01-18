@@ -35,6 +35,8 @@ module.exports = {
 
     const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
 
+    logger.info(guilds[interaction.guildId]);
+
     client.guilds.cache
       .get(interaction.guildId)
       .channels.create({
