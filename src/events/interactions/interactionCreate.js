@@ -1,5 +1,7 @@
 const { BaseInteraction, Client, EmbedBuilder } = require("discord.js");
 const logger = require("../../utils/logger");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   name: "interactionCreate",
