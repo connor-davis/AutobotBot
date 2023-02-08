@@ -17,7 +17,7 @@ module.exports = {
   execute: (interaction, client, logger) => {
     const pingEmbed = new EmbedBuilder()
       .setTitle("Autobot Ping Information")
-      .setColor(0x34d399)
+      .setColor(0xc026d3)
       .addFields([
         { name: "WS Latency", value: Math.round(client.ws.ping) + "ms" },
         {

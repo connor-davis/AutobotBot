@@ -17,6 +17,6 @@ module.exports = {
 
     interaction.member.roles.add(memberRole);
 
-    interaction.reply({ content: "You have been verified. Welcome to Autobot Macros!", ephemeral: true });
+    interaction.reply({ content: "You have been verified. Welcome to Cyclone Services!", ephemeral: true });
   },
 };
