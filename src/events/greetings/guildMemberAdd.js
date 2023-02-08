@@ -47,7 +47,7 @@ module.exports = {
     const channel = member.guild.channels.cache.get(
       guilds[member.guild.id].welcomeChannel
     );
-    const role = message.member.roles.cache.find(role => role.id === guilds[member.guild.id].memberRole);
+    const role = member.guild.roles.cache.get(guilds[member.guild.id].memberRole);
 
     member.roles.add(role);
 
