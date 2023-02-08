@@ -27,12 +27,6 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    interaction.reply({
-      content:
-        "Your ticket will be created shortly. Please be patient and wait for staff to assist you.",
-      ephemeral: true,
-    });
-
     const guilds = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
         encoding: "utf-8",
@@ -44,7 +38,9 @@ module.exports = {
 
     const existing = client.guilds.cache
       .get(interaction.guildId)
-      .channels.cache.find(channel => channel.name === "ticket-" + interaction.user.username);
+      .channels.cache.find(
+        (channel) => channel.name === "ticket-" + interaction.user.username
+      );
 
     if (existing)
       return interaction.reply({
@@ -52,6 +48,12 @@ module.exports = {
           "You already have a ticket, please close your ticket before opening a new one.",
         ephemeral: true,
       });
+
+    interaction.reply({
+      content:
+        "Your ticket will be created shortly. Please be patient and wait for staff to assist you.",
+      ephemeral: true,
+    });
 
     client.guilds.cache
       .get(interaction.guildId)
