@@ -32,8 +32,8 @@ module.exports = {
       .setTitle("Welcome To Cyclone Services")
       .setDescription(
         "Welcome **" +
-          member.username +
-          " to the discord.\n\nThere are now " +
+          member.user.username +
+          "** to the discord.\n\nThere are now " +
           member.guild.memberCount +
           " members."
       )
