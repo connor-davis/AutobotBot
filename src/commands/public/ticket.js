@@ -12,6 +12,16 @@ const {
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * option
+    .setName("create")
+    .setDescription("Enter the reason for the ticket.")
+    .addChoices(
+      { name: 'Support', value: 'support' },
+      { name: 'Services', value: 'services' },
+    ))
+    .setRequired(false))))
+ */
 module.exports = {
   name: "ticket",
   data: new SlashCommandBuilder()
@@ -20,13 +30,20 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("create")
-        .setDescription("Enter the reason for the ticket.")
+        .setDescription("Give a reason for the ticket.")
+        .addChoices(
+          { name: "Support", value: "support" },
+          { name: "Services", value: "services" }
+        )
+        .setRequired(false)
     ),
   /**
    * @param {ChatInputCommandInteraction} interaction
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
+    if (!interaction.options.resolved) return interaction.reply();
+
     const guilds = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
         encoding: "utf-8",
