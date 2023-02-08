@@ -8,6 +8,8 @@ const {
   ButtonStyle,
   PermissionsBitFiel,
 } = require("discord.js");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   name: "guildMemberAdd",
