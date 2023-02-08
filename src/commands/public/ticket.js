@@ -44,7 +44,7 @@ module.exports = {
 
     const existing = client.guilds.cache
       .get(interaction.guildId)
-      .channels.cache.get("ticket-" + interaction.user.username);
+      .channels.cache.find(channel => channel.name === "ticket-" + interaction.user.username);
 
     if (existing)
       return interaction.reply({
