@@ -10,12 +10,8 @@ module.exports = {
    * @param {Client} client
    */
   execute: (client, _, interaction) => {
-    const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
-
     if (interaction.isChatInputCommand()) {
       const command = client.commands.get(interaction.commandName);
-
-      if (interaction.commandName !== "register-guild" && !interaction.guildId in guilds) return interaction.reply({ content: "Autobot has not been registered with this guild.", ephemeral: true });
 
       if (!command)
         return interaction.reply({
@@ -58,19 +54,6 @@ module.exports = {
       logger
         .custom(`button.logger`)
         .info(`${interaction.user.username} used the ${button.name} button.`);
-
-      const buttonLogEmbed = new EmbedBuilder()
-        .setColor(0x34d399)
-        .setThumbnail(interaction.user.avatarURL())
-        .addFields(
-          { name: "Button Name", value: button.name, inline: true },
-          { name: "Username", value: interaction.user.username, inline: true }
-        )
-        .setTimestamp()
-        .setFooter({
-          text: "Autobot Button Logger",
-          iconURL: client.user.avatarURL(),
-        });
 
       button.execute(
         interaction,

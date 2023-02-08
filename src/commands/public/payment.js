@@ -14,19 +14,19 @@ module.exports = {
    */
   execute: (interaction, client, logger) => {
     const paymentInfoEmbed = new EmbedBuilder()
-      .setTitle("Autobot Payment Details")
+      .setTitle("Cyclone Payment Details")
       .setDescription(
-        "Below you can find payment details for purchasing Autobot. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
+        "Below you can find payment details for purchasing from Cyclone Services. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
       )
-      .setColor(0x34d399)
+      .setColor(0xc026d3)
       .addFields([
         {
           name: "Paypal",
-          value: "https://paypal.me/lonewolftech",
+          value: "https://paypal.me/CycloneServices",
         },
         {
           name: "Bank Account Number",
-          value: "1458805830",
+          value: "2080761559",
           inline: true,
         },
         {

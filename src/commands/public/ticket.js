@@ -16,7 +16,7 @@ module.exports = {
   name: "ticket",
   data: new SlashCommandBuilder()
     .setName("ticket")
-    .setDescription("Use the ticket system of Autobot.")
+    .setDescription("Use the ticket system of Cyclone Services.")
     .addStringOption((option) =>
       option
         .setName("create")
@@ -33,17 +33,34 @@ module.exports = {
       ephemeral: true,
     });
 
-    const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
+    const guilds = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
+        encoding: "utf-8",
+      })
+    );
 
     logger.info(guilds);
     logger.info(interaction.guildId in guilds);
+
+    const existing = client.guilds.cache
+      .get(interaction.guildId)
+      .channels.cache.get("ticket-" + interaction.user.username);
+
+    if (existing)
+      return interaction.reply({
+        content:
+          "You already have a ticket, please close your ticket before opening a new one.",
+        ephemeral: true,
+      });
 
     client.guilds.cache
       .get(interaction.guildId)
       .channels.create({
         name: "ticket-" + interaction.user.username,
         type: ChannelType.GuildText,
-        topic: "Ticket type: " + interaction.options.get("create").value,
+        topic:
+          "Ticket type: " + interaction.options.get("create").value ||
+          "support",
         parent: guilds[interaction.guildId].ticketsCategory,
         permissionOverwrites: [
           {
@@ -116,14 +133,14 @@ module.exports = {
         );
 
         const ticketEmbed = new EmbedBuilder()
-          .setColor(0x34d399)
-          .setTitle("Autobot Ticket")
+          .setColor(0xc026d3)
+          .setTitle("Cyclone Services Ticket")
           .setDescription(
-            "Please be patient and wait for staff to assist you. If you want to purchase autobot, you can use the /payment command when you are ready to pay."
+            "Please be patient and wait for staff to assist you. If you want to purchase services, you can use the /payment command when you are ready to pay."
           )
           .addFields({
             name: "Ticket Type",
-            value: interaction.options.get("create").value,
+            value: interaction.options.get("create").value || "support",
           })
           .setTimestamp()
           .setFooter({

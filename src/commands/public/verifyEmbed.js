@@ -16,8 +16,8 @@ module.exports = {
         const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
 
         const ticketEmbed = new EmbedBuilder()
-            .setColor(0x34d399)
-            .setTitle("Autobot Macros Verification")
+            .setColor(0xc026d3)
+            .setTitle("Cyclone Services Verification")
             .setDescription(
                 "Please click the verify button below to gain access to the rest of the discord server."
             );
