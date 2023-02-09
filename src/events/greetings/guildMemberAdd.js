@@ -37,7 +37,7 @@ module.exports = {
           member.guild.memberCount +
           " members."
       )
-      .setImage("attachment://banner2.gif")
+      .setImage("attachment://banner.gif")
       .setThumbnail("attachment://thumbnail.gif")
       .setColor(0xc026d3)
       .setTimestamp()
@@ -53,6 +53,6 @@ module.exports = {
 
     member.roles.add(role);
 
-    channel.send({ embeds: [ticketEmbed], files: [path.join(process.cwd(), "assets", "banner2.gif"), path.join(process.cwd(), "assets", "thumbnail.gif")] });
+    channel.send({ embeds: [ticketEmbed], files: [path.join(process.cwd(), "assets", "banner.gif"), path.join(process.cwd(), "assets", "thumbnail.gif")] });
   },
 };
