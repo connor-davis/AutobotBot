@@ -9,6 +9,8 @@ module.exports = {
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
+    console.log(interaction.values);
+
     const guilds = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
         encoding: "utf-8",
