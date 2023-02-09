@@ -1,3 +1,4 @@
+const { StringSelectMenuInteraction } = require("discord.js");
 const { Client, ButtonInteraction } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
@@ -5,12 +6,10 @@ const path = require("path");
 module.exports = {
   name: "ticketButton",
   /**
-   * @param {ButtonInteraction} interaction
+   * @param {StringSelectMenuInteraction} interaction
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    if (!interaction.options.resolved) return interaction.reply();
-
     const guilds = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
         encoding: "utf-8",
