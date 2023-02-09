@@ -50,7 +50,7 @@ const Autobot = async () => {
           autobotClient.user.setActivity("https://cycloneservices.co.za");
           i--;
         }
-      }, 2000);
+      }, 5000);
     })
     .catch((error) => {
       logger.error(error);
