@@ -136,7 +136,10 @@ module.exports = {
             )
             .addFields({
               name: "Ticket Type",
-              value: interaction.options.get("create").value || "support",
+              value:
+                interaction.values.length > 1
+                  ? interaction.values.join(",")
+                  : interaction.values[0] || "support",
             })
             .setTimestamp()
             .setFooter({
