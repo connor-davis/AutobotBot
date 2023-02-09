@@ -61,5 +61,36 @@ module.exports = {
         logger.custom(`button.${button.name}`)
       );
     }
+
+    if (interaction.isStringSelectMenu()) {
+      const selectMenu = client.selectMenus.get(interaction.customId);
+
+      if (!selectMenu)
+        return interaction.reply({
+          content: "This select menu is outdated.",
+          ephemeral: true,
+        });
+
+      if (
+        selectMenu.developer &&
+        interaction.user.id !== process.env.DEVELOPER_ID
+      )
+        return interaction.reply({
+          content: "This select menu is only available to the developer.",
+          ephemeral: true,
+        });
+
+      logger
+        .custom(`selectMenu.logger`)
+        .info(
+          `${interaction.user.username} used the ${selectMenu.name} selectMenu.`
+        );
+
+      selectMenu.execute(
+        interaction,
+        client,
+        logger.custom(`selectMenu.${selectMenu.name}`)
+      );
+    }
   },
 };
