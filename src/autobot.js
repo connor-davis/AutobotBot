@@ -35,11 +35,22 @@ const Autobot = async () => {
 
   await loadEvents(autobotClient);
 
+  let i = 0;
+
   autobotClient
     .login(process.env.TOKEN)
     .then(() => {
       logger.success("Autobot has logged in to Discord.");
-      autobotClient.user.setActivity("https://auto-bot.co.za");
+      
+      setInterval(() => {
+        if (i === 0) {
+          autobotClient.user.setActivity("https://auto-bot.co.za");
+          i++;
+        } else {
+          autobotClient.user.setActivity("https://cycloneservices.co.za");
+          i--;
+        }
+      }, 2000);
     })
     .catch((error) => {
       logger.error(error);
