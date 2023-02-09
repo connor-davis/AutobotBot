@@ -1,5 +1,6 @@
 const { loadButtons } = require("../handlers/buttonHandler");
 const { loadCommands } = require("../handlers/commandHandler");
+const { loadSelectMenus } = require("../handlers/selectMenuHandler");
 
 module.exports = {
     name: "ready",
@@ -9,5 +10,6 @@ module.exports = {
 
         loadCommands(client);
         loadButtons(client);
+        loadSelectMenus(client);
     }
 }
