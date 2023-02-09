@@ -15,7 +15,7 @@ module.exports = {
     execute: (interaction, client, logger) => {
         const guilds = JSON.parse(fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), { encoding: "utf-8" }));
 
-        const ticketEmbed = new EmbedBuilder()
+        const verifyEmbed = new EmbedBuilder()
             .setColor(0xc026d3)
             .setTitle("Cyclone Services Verification")
             .setDescription(
@@ -29,9 +29,9 @@ module.exports = {
                 .setStyle(ButtonStyle.Primary)
         );
 
-        const channel = interaction.guild.channels.cache.get(guilds[interaction.guildId].verifyChannel);
+        const channel = interaction.channel;
 
-        channel.send({ embeds: [ticketEmbed], components: [row] });
+        channel.send({ embeds: [verifyEmbed], components: [row] });
 
         interaction.reply({ content: "The verify embed has been created.", ephemeral: true });
     }
