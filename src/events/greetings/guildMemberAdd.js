@@ -53,6 +53,6 @@ module.exports = {
 
     member.roles.add(role);
 
-    channel.send({ embeds: [ticketEmbed], files: ["../../../assets/banner2.gif","../../../assets/thumbnail.gif"] });
+    channel.send({ embeds: [ticketEmbed], files: [path.join(process.cwd(), "assets", "banner2.gif"), path.join(process.cwd(), "assets", "thumbnail.gif")] });
   },
 };
