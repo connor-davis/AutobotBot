@@ -37,7 +37,7 @@ module.exports = {
           member.guild.memberCount +
           " members."
       )
-      .setImage("attachment://banner.gif")
+      .setImage("attachment://banner2.gif")
       .setThumbnail("attachment://thumbnail.gif")
       .setColor(0xc026d3)
       .setTimestamp()
