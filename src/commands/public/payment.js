@@ -10,15 +10,15 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("payment")
     .setDescription("Receive my payment details.")
-    .addStringOption(
-      new SlashCommandStringOption()
+    .addStringOption((option) =>
+      option
         .setName("person")
         .setDescription("Please choose the person you are paying.")
-        .addChoices([
+        .addChoices(
           { name: "Quixy", value: "quixy" },
           { name: "Despair", value: "despair" },
-          { name: "Shoto", value: "shoto" },
-        ])
+          { name: "Shoto", value: "shoto" }
+        )
         .setRequired(true)
     ),
   /**
