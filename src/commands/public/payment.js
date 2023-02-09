@@ -25,7 +25,7 @@ module.exports = {
    * @param {ChatInputCommandInteraction} interaction
    */
   execute: (interaction, client, logger) => {
-    switch (interaction.options.get("person")) {
+    switch (interaction.options.getString("person")) {
       case "quixy":
         const quixyPaymentInfoEmbed = new EmbedBuilder()
           .setTitle("Cyclone Payment Details")
