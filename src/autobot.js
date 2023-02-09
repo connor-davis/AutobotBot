@@ -45,8 +45,10 @@ const Autobot = async () => {
       setInterval(() => {
         if (i === 0) {
           autobotClient.user.setActivity("https://auto-bot.co.za");
+          i++;
         } else {
           autobotClient.user.setActivity("https://cycloneservices.co.za");
+          i--;
         }
       }, 2000);
     })
