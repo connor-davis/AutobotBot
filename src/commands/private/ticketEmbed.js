@@ -46,9 +46,7 @@ module.exports = {
         )
     );
 
-    const channel = interaction.guild.channels.cache.get(
-      guilds[interaction.guildId].buyHereChannel
-    );
+    const channel = interaction.channel;
 
     channel.send({ embeds: [ticketEmbed], components: [row] });
 
