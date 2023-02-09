@@ -1,4 +1,13 @@
-const { Client, StringSelectMenuInteraction, ChannelType, PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require("discord.js");
+const {
+  Client,
+  StringSelectMenuInteraction,
+  ChannelType,
+  PermissionsBitField,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  EmbedBuilder,
+} = require("discord.js");
 const fs = require("fs");
 const path = require("path");
 
@@ -45,8 +54,9 @@ module.exports = {
           name: "ticket-" + interaction.user.username,
           type: ChannelType.GuildText,
           topic:
-            "Ticket type: " + interaction.options.get("create").value ||
-            "support",
+            "Ticket type: " + interaction.values.length > 1
+              ? interaction.values.join(",")
+              : interaction.values[0] || "support",
           parent: guilds[interaction.guildId].ticketsCategory,
           permissionOverwrites: [
             {
