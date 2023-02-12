@@ -59,7 +59,7 @@ module.exports = {
             iconURL: interaction.user.avatarURL(),
           });
 
-        interaction.reply({ embeds: [quixyPaymentInfoEmbed], ephemeral: true });
+        interaction.reply({ embeds: [quixyPaymentInfoEmbed] });
         break;
       case "despair":
         const despairPaymentInfoEmbed = new EmbedBuilder()
@@ -95,8 +95,7 @@ module.exports = {
           });
 
         interaction.reply({
-          embeds: [despairPaymentInfoEmbed],
-          ephemeral: true,
+          embeds: [despairPaymentInfoEmbed]
         });
         break;
       case "shoto":
@@ -128,7 +127,7 @@ module.exports = {
             iconURL: interaction.user.avatarURL(),
           });
 
-        interaction.reply({ embeds: [shotoPaymentInfoEmbed], ephemeral: true });
+        interaction.reply({ embeds: [shotoPaymentInfoEmbed] });
         break;
       default:
         break;
