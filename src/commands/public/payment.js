@@ -95,7 +95,7 @@ module.exports = {
           });
 
         interaction.reply({
-          embeds: [despairPaymentInfoEmbed]
+          embeds: [despairPaymentInfoEmbed],
         });
         break;
       case "shoto":
@@ -106,6 +106,10 @@ module.exports = {
           )
           .setColor(0xc026d3)
           .addFields([
+            {
+              name: "Paypal",
+              value: "https://paypal.me/TheGreekShoto",
+            },
             {
               name: "Bank Account Number",
               value: "62922747847",
