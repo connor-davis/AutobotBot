@@ -38,7 +38,7 @@ module.exports = {
 
     const attachment = await createTranscript(interaction.channel, {
       poweredBy: false,
-      filename: interaction.channel.name + "-transcript",
+      filename: interaction.channel.name + "-transcript.html",
       footerText: "#CycloneOT",
     });
 
