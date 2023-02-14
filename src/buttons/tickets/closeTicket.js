@@ -38,8 +38,8 @@ module.exports = {
 
     const attachment = await createTranscript(interaction.channel, {
       poweredBy: false,
-      footerText:
-        interaction.channel.name + "-transcript of {number} messages.",
+      filename: interaction.channel.name + "-transcript",
+      footerText: "#CycloneOT",
     });
 
     interaction.guild.channels.cache
