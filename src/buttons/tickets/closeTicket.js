@@ -42,11 +42,11 @@ module.exports = {
         interaction.channel.name + "-transcript of {number} messages.",
     });
 
-    const channelMembers = interaction.channel.members;
-
-    for (const channelMember of channelMembers) {
-      channelMember.send({ files: [attachment] });
-    }
+    interaction.guild.channels
+      .get(interaction.channelId)
+      .members.forEach((member) => {
+        member.send({ files: [attachment] });
+      });
 
     delete tickets[interaction.channel.id];
 
