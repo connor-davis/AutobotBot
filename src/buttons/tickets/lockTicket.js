@@ -69,6 +69,10 @@ module.exports = {
           allow: ticketPermissions,
         },
         {
+          id: ticket.ticketStaffRoles[3],
+          allow: ticketPermissions,
+        },
+        {
           id: ticket.everyoneId,
           deny: ticketPermissions,
         },
