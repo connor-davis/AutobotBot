@@ -38,6 +38,7 @@ module.exports = {
 
     const attachment = await createTranscript(interaction.channel, {
       poweredBy: false,
+      filename: interaction.channel.name + "-transcript",
       footerText:
         interaction.channel.name + "-transcript of {number} messages.",
     });
