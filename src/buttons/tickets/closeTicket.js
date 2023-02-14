@@ -42,7 +42,7 @@ module.exports = {
         interaction.channel.name + "-transcript of {number} messages.",
     });
 
-    interaction.guild.channels
+    interaction.guild.channels.cache
       .get(interaction.channelId)
       .members.forEach((member) => {
         member.send({ files: [attachment] });
