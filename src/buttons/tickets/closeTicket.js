@@ -9,7 +9,7 @@ module.exports = {
    * @param {ButtonInteraction} interaction
    * @param {Client} client
    */
-  execute: (interaction, client, logger) => {
+  execute: async (interaction, client, logger) => {
     const guilds = JSON.parse(
       fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
         encoding: "utf-8",
@@ -36,7 +36,7 @@ module.exports = {
       })
     );
 
-    const attachment = createTranscript(interaction.channel, {
+    const attachment = await createTranscript(interaction.channel, {
       poweredBy: false,
       footerText:
         interaction.channel.name + "-transcript of {number} messages.",
