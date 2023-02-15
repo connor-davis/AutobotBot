@@ -71,7 +71,7 @@ module.exports = {
           .addFields([
             {
               name: "Paypal",
-              value: "https://paypal.me/lonewolftech",
+              value: "https://paypal.me/cdvsdev",
             },
             {
               name: "Bank Account Number",
