@@ -45,7 +45,14 @@ module.exports = {
     interaction.guild.channels.cache
       .get(interaction.channelId)
       .members.forEach((member) => {
-        member.send({ files: [attachment] });
+        if (member instanceof User)
+        {
+          try {
+            member.send({ files: [attachment] });
+          } catch (error) {
+            console.log("Error. Wont send the transcript to " + member.username);
+          }
+        }
       });
 
     delete tickets[interaction.channel.id];
