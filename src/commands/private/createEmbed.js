@@ -37,8 +37,6 @@ module.exports = {
         .setDescription("Must the discords banned be used?")
         .setRequired(false)
     )
-    .addAttachmentOption((option) => option.setName())
-    .addStringOption()
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
   /**
    * @param {ChatInputCommandInteraction} interaction
