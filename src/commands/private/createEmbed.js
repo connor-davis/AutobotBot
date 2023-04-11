@@ -25,6 +25,20 @@ module.exports = {
     .addStringOption((option) =>
       option.setName("title").setDescription("Add a title.").setRequired(false)
     )
+    .addBooleanOption((option) =>
+      option
+        .setName("thumbnail")
+        .setDescription("Must the discords icon be used?")
+        .setRequired(false)
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("image")
+        .setDescription("Must the discords banned be used?")
+        .setRequired(false)
+    )
+    .addAttachmentOption((option) => option.setName())
+    .addStringOption()
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
   /**
    * @param {ChatInputCommandInteraction} interaction
@@ -44,13 +58,33 @@ module.exports = {
       customEmbed.setTitle(interaction.options.getString("title"));
     }
 
-    customEmbed.setDescription(
-      interaction.options.getString("content").replace(";", "\n")
-    );
+    if (interaction.options.getBoolean("thumbnail")) {
+      customEmbed.setThumbnail("attachment://thumbnail.gif");
+    }
+
+    if (interaction.options.getBoolean("image")) {
+      customEmbed.setImage("attachment://banner.gif");
+    }
+
+    customEmbed
+      .setAuthor({
+        name: "https://cycloneservices.co.za",
+        iconURL: interaction.guild.iconURL(),
+      })
+      .setTimestamp()
+      .setDescription(
+        interaction.options.getString("content").replace(";", "\n")
+      );
 
     const channel = interaction.channel;
 
-    channel.send({ embeds: [customEmbed] });
+    channel.send({
+      embeds: [customEmbed],
+      files: [
+        path.join(process.cwd(), "assets", "banner.gif"),
+        path.join(process.cwd(), "assets", "thumbnail.gif"),
+      ],
+    });
 
     interaction.reply({
       content: "The embed has been created.",
