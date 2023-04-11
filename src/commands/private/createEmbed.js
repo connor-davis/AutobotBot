@@ -17,13 +17,13 @@ module.exports = {
     .setName("create-embed")
     .setDescription("Create an embed.")
     .addStringOption((option) =>
-      option.setName("title").setDescription("Add a title.").setRequired(false)
-    )
-    .addStringOption((option) =>
       option
         .setName("content")
         .setDescription('Add content and separate lines with ";".')
         .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option.setName("title").setDescription("Add a title.").setRequired(false)
     )
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
   /**
