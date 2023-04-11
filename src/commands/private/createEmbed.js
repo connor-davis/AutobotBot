@@ -65,8 +65,8 @@ module.exports = {
     }
 
     customEmbed
-      .setAuthor({
-        name: "https://cycloneservices.co.za",
+      .setFooter({
+        text: "https://cycloneservices.co.za",
         iconURL: interaction.guild.iconURL(),
       })
       .setTimestamp()
