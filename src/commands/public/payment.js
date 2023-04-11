@@ -17,7 +17,7 @@ module.exports = {
         .addChoices(
           { name: "Quixy", value: "quixy" },
           { name: "Despair", value: "despair" },
-          { name: "Shoto", value: "shoto" }
+          { name: "Oom Cyril", value: "oomcyril" }
         )
         .setRequired(true)
     ),
@@ -98,8 +98,8 @@ module.exports = {
           embeds: [despairPaymentInfoEmbed],
         });
         break;
-      case "oom cyril":
-        const shotoPaymentInfoEmbed = new EmbedBuilder()
+      case "oomcyril":
+        const oomCyrilPaymentInfoEmbed = new EmbedBuilder()
           .setTitle("Cyclone Payment Details")
           .setDescription(
             "Below you can find payment details for purchasing from Oom Cyril Cyclone Services. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
@@ -131,7 +131,7 @@ module.exports = {
             iconURL: interaction.user.avatarURL(),
           });
 
-        interaction.reply({ embeds: [shotoPaymentInfoEmbed] });
+        interaction.reply({ embeds: [oomCyrilPaymentInfoEmbed] });
         break;
       default:
         break;
