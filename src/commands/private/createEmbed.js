@@ -16,48 +16,44 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("create-embed")
     .setDescription("Create an embed.")
-    .addSubcommand((fieldsSubCommand) =>
-      fieldsSubCommand
-        .setName("field")
-        .setDescription("Add a field to the embed.")
-        .addStringOption((option) =>
-          option.setName("fieldTitle").setDescription("Set the fields title")
-        )
-        .addStringOption((option) =>
-          option
-            .setName("fieldContent")
-            .setDescription("Set the fields content.")
-        )
-    )
     .addStringOption((option) =>
       option.setName("title").setDescription("Add a title.").setRequired(false)
     )
-    .se.setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
+    .addStringOption((option) =>
+      option
+        .setName("content")
+        .setDescription('Add content and separate lines with ";".')
+        .setRequired(true)
+    )
+    .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
   /**
    * @param {ChatInputCommandInteraction} interaction
    * @param {Client} client
    */
   execute: (interaction, client, logger) => {
-    // const customEmbed = new EmbedBuilder()
-    //   .setColor(0xc026d3)
-    //   .setTitle("Cyclone Services Verification")
-    //   .setDescription(
-    //     "Please click the verify button below to gain access to the rest of the discord server."
-    //   );
+    if (!interaction.options.getString("content")) {
+      interaction.reply({
+        content: "Please make sure that there is content in the embed.",
+        ephemeral: true,
+      });
+    }
 
-    // const row = new ActionRowBuilder().addComponents(
-    //   new ButtonBuilder()
-    //     .setCustomId("verifyButton")
-    //     .setLabel("✔ Verify")
-    //     .setStyle(ButtonStyle.Primary)
-    // );
+    const customEmbed = new EmbedBuilder().setColor(0xc026d3);
 
-    // const channel = interaction.channel;
+    if (interaction.options.getString("title")) {
+      customEmbed.setTitle(interaction.options.getString("title"));
+    }
 
-    // channel.send({ embeds: [verifyEmbed], components: [row] });
+    customEmbed.setDescription(
+      interaction.options.getString("content").replace(";", "\n")
+    );
+
+    const channel = interaction.channel;
+
+    channel.send({ embeds: [customEmbed] });
 
     interaction.reply({
-      content: "The verify embed has been created.",
+      content: "The embed has been created.",
       ephemeral: true,
     });
   },
