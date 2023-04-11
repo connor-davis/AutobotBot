@@ -98,31 +98,31 @@ module.exports = {
           embeds: [despairPaymentInfoEmbed],
         });
         break;
-      case "shoto":
+      case "oom cyril":
         const shotoPaymentInfoEmbed = new EmbedBuilder()
           .setTitle("Cyclone Payment Details")
           .setDescription(
-            "Below you can find payment details for purchasing from Shoto Cyclone Services. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
+            "Below you can find payment details for purchasing from Oom Cyril Cyclone Services. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
           )
           .setColor(0xc026d3)
           .addFields([
             {
               name: "Paypal",
-              value: "https://paypal.me/TheGreekShoto",
+              value: "https://paypal.me/GTAMONEYSERVICE943",
             },
             {
               name: "Bank Account Number",
-              value: "62922747847",
+              value: "10129143608",
               inline: true,
             },
             {
               name: "Bank Branch Code",
-              value: "250655",
+              value: "051001",
               inline: true,
             },
             {
               name: "Bank Name",
-              value: "FNB",
+              value: "Standard Bank",
               inline: true,
             },
           ])
