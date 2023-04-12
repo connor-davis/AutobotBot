@@ -55,16 +55,20 @@ module.exports = {
       interaction.options.getBoolean("thumbnail") || false;
     const mustHaveBanner = interaction.options.getBoolean("banner") || false;
 
+    let files = [];
+
     if (interaction.options.getString("title")) {
       customEmbed.setTitle(interaction.options.getString("title"));
     }
 
     if (mustHaveThumbnail) {
       customEmbed.setThumbnail("attachment://thumbnail.gif");
+      files.push(path.join(process.cwd(), "assets", "thumbnail.gif"));
     }
 
     if (mustHaveBanner) {
       customEmbed.setImage("attachment://banner.gif");
+      files.push(path.join(process.cwd(), "assets", "banner.gif"));
     }
 
     customEmbed
@@ -81,11 +85,7 @@ module.exports = {
 
     channel.send({
       embeds: [customEmbed],
-      files: [
-        mustHaveBanner && path.join(process.cwd(), "assets", "banner.gif"),
-        mustHaveThumbnail &&
-          path.join(process.cwd(), "assets", "thumbnail.gif"),
-      ],
+      files,
     });
 
     interaction.reply({
