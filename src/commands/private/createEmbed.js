@@ -33,7 +33,7 @@ module.exports = {
     )
     .addBooleanOption((option) =>
       option
-        .setName("image")
+        .setName("banner")
         .setDescription("Must the discords banned be used?")
         .setRequired(false)
     )
@@ -60,7 +60,7 @@ module.exports = {
       customEmbed.setThumbnail("attachment://thumbnail.gif");
     }
 
-    if (interaction.options.getBoolean("image")) {
+    if (interaction.options.getBoolean("banner")) {
       customEmbed.setImage("attachment://banner.gif");
     }
 
@@ -79,8 +79,8 @@ module.exports = {
     channel.send({
       embeds: [customEmbed],
       files: [
-        path.join(process.cwd(), "assets", "banner.gif"),
-        path.join(process.cwd(), "assets", "thumbnail.gif"),
+        interaction.options.getBoolean("banner") && path.join(process.cwd(), "assets", "banner.gif"),
+        interaction.options.getBoolean("thumbnail") && path.join(process.cwd(), "assets", "thumbnail.gif"),
       ],
     });
 
