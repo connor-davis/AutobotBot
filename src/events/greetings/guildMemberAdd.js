@@ -13,7 +13,6 @@ const path = require("path");
 
 module.exports = {
   name: "guildMemberAdd",
-  once: true,
   /**
    *
    * @param {Client} client

@@ -25,8 +25,6 @@ module.exports = {
       })
     );
 
-    console.log(guilds[interaction.guildId]);
-
     if (
       !interaction.member.roles.cache.has(guilds[interaction.guildId].tosRole)
     )
