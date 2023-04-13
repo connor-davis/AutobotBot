@@ -16,6 +16,24 @@ module.exports = {
    * @param {ChatInputCommandInteraction} interaction
    */
   execute: (interaction, client, logger) => {
-    interaction.reply({ content: "Command worked.", ephemeral: true });
+    const guilds = JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "data", "guilds.json"), {
+        encoding: "utf-8",
+      })
+    );
+
+    if (interaction.member.roles.cache.has(guilds[interaction.guildId].tosRole))
+      return interaction.reply({
+        content:
+          "You have already agreed to the terms of service of Cyclone Services.",
+        ephemeral: true,
+      });
+    else {
+      const member = interaction.guild.members.cache.find((user) => user.id === interaction.user.id);
+
+      member.roles.cache.add(guilds[interaction.guildId].tosRole);
+
+      interaction.reply({ content: "Thank you for agreeing to the terms of service of Cyclone Services.", ephemeral: true });
+    }
   },
 };
