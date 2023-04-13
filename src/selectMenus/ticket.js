@@ -27,7 +27,7 @@ module.exports = {
 
     console.log(guilds[interaction.guildId]);
 
-    console.log(interaction.member.roles.includes(guilds[interaction.guildId].tosRole));
+    console.log(interaction.member.roles.cache.has(guilds[interaction.guildId].tosRole));
 
     // client.guilds.cache
     //   .get(interaction.guildId)
