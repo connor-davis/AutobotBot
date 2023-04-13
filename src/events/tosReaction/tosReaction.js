@@ -28,11 +28,6 @@ module.exports = {
       })
     );
 
-    if (reaction.emoji instanceof ReactionEmoji)
-    {
-        console.log(reaction.emoji.name);
-
-        reaction.remove();
-    }
+    console.log(reaction.emoji.name);
   },
 };
