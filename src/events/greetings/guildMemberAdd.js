@@ -1,4 +1,5 @@
 const { GuildMember } = require("discord.js");
+const { Events } = require("discord.js");
 const {
   Client,
   User,
@@ -12,7 +13,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-  name: "guildMemberAdd",
+  name: Events.GuildMemberAdd,
   /**
    *
    * @param {Client} client

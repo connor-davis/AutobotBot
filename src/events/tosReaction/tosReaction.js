@@ -1,5 +1,6 @@
 const { GuildMember } = require("discord.js");
 const { MessageReaction } = require("discord.js");
+const { Events } = require("discord.js");
 const { ReactionEmoji } = require("discord.js");
 const {
   Client,
@@ -14,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-  name: "messageReactionAdd",
+  name: Events.MessageReactionAdd,
   /**
    *
    * @param {Client} client
@@ -28,6 +29,6 @@ module.exports = {
       })
     );
 
-    console.log(reaction.emoji.name);
+    console.log(reaction);
   },
 };
