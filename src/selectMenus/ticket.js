@@ -25,6 +25,8 @@ module.exports = {
       })
     );
 
+    console.log(guilds[interaction.guild]);
+
     client.guilds.cache
       .get(interaction.guildId)
       .roles.fetch(guilds[interaction.guild].tosRole)
