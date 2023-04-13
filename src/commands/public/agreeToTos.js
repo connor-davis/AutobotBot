@@ -33,7 +33,7 @@ module.exports = {
     else {
       const member = interaction.guild.members.cache.find((user) => user.id === interaction.user.id);
 
-      member.roles.cache.add(guilds[interaction.guildId].tosRole);
+      member.roles.add(guilds[interaction.guildId].tosRole);
 
       interaction.reply({ content: "Thank you for agreeing to the terms of service of Cyclone Services.", ephemeral: true });
     }
