@@ -17,7 +17,7 @@ module.exports = {
         .addChoices(
           { name: "Quixy", value: "quixy" },
           { name: "Despair", value: "despair" },
-          { name: "Oom Cyril", value: "oomcyril" }
+          { name: "Oom Cyril", value: "oomcyril" },
           { name: "NOTABOT", value: "notabot" }
         )
         .setRequired(true)
