@@ -167,7 +167,7 @@ module.exports = {
             iconURL: interaction.user.avatarURL(),
           });
 
-        interaction.reply({ embeds: [oomCyrilPaymentInfoEmbed] });
+        interaction.reply({ embeds: [notabotPaymentInfoEmbed] });
         break;
       default:
         break;
