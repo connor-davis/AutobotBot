@@ -133,6 +133,41 @@ module.exports = {
 
         interaction.reply({ embeds: [oomCyrilPaymentInfoEmbed] });
         break;
+      case "notabot":
+        const notabotPaymentInfoEmbed = new EmbedBuilder()
+          .setTitle("Cyclone Payment Details")
+          .setDescription(
+            "Below you can find payment details for purchasing from NOTABOT Cyclone Services. If you are paying with paypal, please pay with friends and family. If you are paying to bank account, please use instant transfer."
+          )
+          .setColor(0xc026d3)
+          .addFields([
+            {
+              name: "Paypal",
+              value: "https://www.paypal.me/ReubenMott",
+            },
+            {
+              name: "Bank Account Number",
+              value: "1976731761",
+              inline: true,
+            },
+            {
+              name: "Bank Branch Code",
+              value: "470010",
+              inline: true,
+            },
+            {
+              name: "Bank Name",
+              value: "Capitec",
+              inline: true,
+            },
+          ])
+          .setFooter({
+            text: "Requested by: " + interaction.user.username,
+            iconURL: interaction.user.avatarURL(),
+          });
+
+        interaction.reply({ embeds: [oomCyrilPaymentInfoEmbed] });
+        break;
       default:
         break;
     }
