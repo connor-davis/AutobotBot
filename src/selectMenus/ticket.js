@@ -89,14 +89,6 @@ module.exports = {
               ],
             },
             {
-              id: guilds[interaction.guildId].helperRole,
-              allow: [
-                PermissionsBitField.Flags.ViewChannel,
-                PermissionsBitField.Flags.SendMessages,
-                PermissionsBitField.Flags.ReadMessageHistory,
-              ],
-            },
-            {
               id: guilds[interaction.guildId].botRole,
               allow: [
                 PermissionsBitField.Flags.ViewChannel,
@@ -126,7 +118,6 @@ module.exports = {
             ticketStaffRoles: [
               guilds[interaction.guildId].ownerRole,
               guilds[interaction.guildId].adminRole,
-              guilds[interaction.guildId].helperRole,
               guilds[interaction.guildId].botRole,
             ],
             everyoneId: guilds[interaction.guildId].everyoneRole,
